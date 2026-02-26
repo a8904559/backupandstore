@@ -1,0 +1,54 @@
+place:
+  source: "trustcloud"
+  target: "trustcloud"
+
+clouds:
+  trustcloud:
+    backup:
+      description: "auto backup123"
+      operatingsystem: "linux"
+      tags: "1.2.8"
+      snapshot_name: "trustcloud"
+      traget_vm: "test"
+      api_base_url: "http://kong.140-110-160-29.nip.io"
+      project_name: "prj1770782178553"
+      project_id: "1600a520-7af5-4fb3-9798-c4b3a536a739"
+      token: "token"
+      filepath: "dss-public://bbb/"  #放路徑就好，檔名自動生成。
+      rclone_dst: "tc_test:cloud-backup-poc/trusted_backup_test/"
+
+
+    restore:
+      flavorID: "b532e5e5-9a44-465d-a6db-244267ec15d2"
+      NetworkID: "601643c2-edec-4a19-bc85-a90ef346ca3f"
+      security_groups: "833d592e-4cbe-469e-b8d1-5eec973c7ea8"
+      api_base_url: "http://kong.140-110-160-29.nip.io"
+      project_name: "prj1770782178553"
+      project_id: "1600a520-7af5-4fb3-9798-c4b3a536a739"
+      token: "token"
+      filepath: "dss-public://bbb/"  # RestoreRclone 使用時會自動設定；Restore 使用時需指定本地映像檔路徑
+      snapshot_name: "forrestroe"
+      operatingsystem: "linux"
+      tags: "1123"
+      VMname: "trustcloudvm"
+      VMpassword: "UEBzc3cwcmQ="
+      
+  # 示例：完全自定義字段名稱
+  ccccloud:
+    backup:
+      # 自定義字段，不需要符合標準名稱
+      aaa: "token_for_ccccloud"
+      bbb: "ssss_value"
+      ccc: "custom_parameter"
+      # 如果有標準字段也可以混用
+      api_base_url: "https://api.ccccloud.com"
+      project_id: "ccc-proj-999"
+      token: "ccc-auth-token"
+
+    restore:
+      aaa: "token_for_ccccloud"
+      bbb: "ssss_value"
+      ddd: "another_custom_field"
+      api_base_url: "https://api.ccccloud.com"
+      project_id: "ccc-proj-999"
+      token: "ccc-auth-token"
